@@ -4,3 +4,6 @@ django>=4.2
 psycopg2-binary  # If using PostgreSQL
 pydantic==2.3
 python-dotenv    # Optional, for env variables
+pydantic==1.10.11
+python-multipart
+email-validator
