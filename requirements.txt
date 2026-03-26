@@ -1,0 +1,3 @@
+python-decouple
+django-cors-headers
+mysqlclient

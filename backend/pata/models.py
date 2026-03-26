@@ -8,11 +8,10 @@ from django.contrib.auth.hashers import make_password,check_password
 
 class Cast(models.Model):
     actor_name = models.CharField(max_length=100)
-    character_name = models.CharField(max_length=100)
     image = models.ImageField(upload_to='cast_images/')
     
     def __str__(self):
-        return f"{self.actor_name} as {self.character_name}"
+        return f"{self.actor_name}"
 
 from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin, BaseUserManager
 from django.db import models

@@ -40,8 +40,8 @@ class MovieBrief(BaseModel):
 class CastSchema(BaseModel):
     id: int
     actor_name: str
-    image_url: Optional[str]
-    movies: List[MovieBrief]
+    image_url: Optional[str] = None
+
 
     class Config:
         orm_mode = True
@@ -57,7 +57,7 @@ class MovieSchema(BaseModel):
     director: Optional[str]
     writer: Optional[str]
     streaming_on: Optional[str]
-    cast: List[CastSchema]
+    cast: Optional[List[CastSchema]] = None
 
     class Config:
         orm_mode = True
@@ -79,18 +79,19 @@ def get_movies(search: Optional[str] = Query(None)):
     for movie in queryset:
         cast_data = []
         for actor in movie.cast.all():
-            other_movies = actor.movie_posters.exclude(id=movie.id)
+            # other_movies = actor
+            # print(other_movies)
             cast_data.append({
                 "id": actor.id,
                 "actor_name": actor.actor_name,
-                "image_url": actor.image_url,
-                "movies": [
-                    {
-                        "id": m.id,
-                        "title": m.title,
-                        "poster_url": m.poster_url
-                    } for m in other_movies
-                ]
+                #"image_url": actor.image_url,
+                # "movies": [
+                #     {
+                #         "id": m.id,
+                #         "title": m.title,
+                #         "poster_url": m.poster_url
+                #     } for m in other_movies
+                # ]
             })
 
         movies_data.append({
@@ -114,21 +115,21 @@ def get_movies(search: Optional[str] = Query(None)):
 def get_movie_by_title(title: str):
     try:
         movie = movie_posters.objects.get(title=title)
-
         cast_data = []
         for actor in movie.cast.all():
-            other_movies = actor.movie_posters.exclude(id=movie.id)
+            #print(actor)
+            # other_movies = actor.movie_posters.exclude(id=movie.id)
             cast_data.append({
                 "id": actor.id,
-                "actor_name": actor.actor_name,
-                "image_url": actor.image_url,
-                "movies": [
-                    {
-                        "id": m.id,
-                        "title": m.title,
-                        "poster_url": m.poster_url
-                    } for m in other_movies
-                ]
+                "actor_name": actor.actor_name
+                #"image_url": actor.image_url,
+                #"movies": [
+                #     {
+                #         "id": m.id,
+                #         "title": m.title,
+                #         "poster_url": m.poster_url
+                #     } for m in other_movies
+                # ]
             })
 
         return {
@@ -141,8 +142,8 @@ def get_movie_by_title(title: str):
             "poster_url": movie.poster_url,
             "director": movie.director,
             "writer": movie.writer,
-            "streaming_on": movie.streaming_on,
-            "cast": cast_data
+            "streaming_on": movie.streaming_on
+            #"cast": cast_data
         }
 
     except movie_posters.DoesNotExist:

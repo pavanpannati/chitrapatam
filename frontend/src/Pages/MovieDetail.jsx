@@ -58,11 +58,11 @@ const MovieDetail = () => {
         key={person.id}
         className="bg-neutral-800 p-3 rounded-xl hover:shadow-xl transition duration-300"
         >
-        <img
+        {/* <img
         src={person.image}
         alt={person.actor_name}
         className="w-full h-48 object-cover rounded-md"
-        />
+        /> */}
         <h3 className="text-lg font-semibold text-amber-100 mt-2">{person.actor_name}</h3>
 
         {person.movies.length > 0 && (

@@ -14,7 +14,7 @@ const MovieList = () => {
   useEffect(() => {
     const fetchMovies = async () => {
       try {
-        const response = await axios.get("http://127.0.0.1:8001/movies/",{ timeout: 5000 });
+        const response = await axios.get("http://127.0.0.1:8001/movies/",{ timeout: 15000 });
         setData(response.data);
         setFiltered(response.data);
       } catch (err) {

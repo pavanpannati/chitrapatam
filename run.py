@@ -1,8 +1,9 @@
 # in a script like run.py
 import subprocess
 import webbrowser
+import sys
 
-subprocess.Popen(["python", "manage.py", "runserver"], cwd="backend")
-subprocess.Popen(["uvicorn", "main:app", "--port", "8001", "--reload"], cwd="fastapi_app")
+subprocess.Popen([sys.executable, "manage.py", "runserver"], cwd="backend")
+subprocess.Popen([sys.executable,"-m","uvicorn", "main:app", "--port", "8001", "--reload"], cwd="fastapi_app")
 webbrowser.open("http://localhost:5173")
 subprocess.call(["npm", "run", "dev"], cwd="frontend")
