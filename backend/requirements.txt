@@ -7,3 +7,4 @@ python-dotenv
 Pillow
 requests
 python-decouple
+psycopg2-binary
