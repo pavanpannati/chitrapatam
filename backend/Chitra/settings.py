@@ -101,4 +101,4 @@ CORS_ALLOW_ALL_ORIGINS = True
 # CUSTOM USER MODEL
 AUTH_USER_MODEL = 'pata.register'
 AUTHENTICATION_BACKENDS = ['pata.backends.LoginBackend']
-```
+
