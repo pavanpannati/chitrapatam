@@ -4,7 +4,7 @@ import sys
 import django
 
 # Setup Django environment
-BASE_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "backend")
+BASE_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "data")
 
 sys.path.append(BASE_DIR)
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'Chitra.settings')
@@ -14,7 +14,7 @@ django.setup()
 from pata.models import movie_posters, Cast  # assuming you have an Actor model
 def load_file(i):
     # Load JSON data
-    file_path = os.path.join(BASE_DIR, "data", f"telugu_150_movies_full{i}.json")
+    file_path = os.path.join(BASE_DIR, f"telugu_150_movies_full{i}.json")
 
     with open(file_path, "r", encoding="utf-8") as f:
         data = json.load(f)
