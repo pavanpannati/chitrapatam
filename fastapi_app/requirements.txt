@@ -1,0 +1,6 @@
+fastapi==0.111.1
+uvicorn[standard]==0.23.1
+django>=4.2
+psycopg2-binary  # If using PostgreSQL
+pydantic==2.3
+python-dotenv    # Optional, for env variables
