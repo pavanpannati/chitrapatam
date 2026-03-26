@@ -18,8 +18,7 @@ def load_file(i):
 
     with open(file_path, "r", encoding="utf-8") as f:
         data = json.load(f)
-    with open(f"D:\desktop 1\\db\\telugu_150_movies_full{i}.json" , "r", encoding="utf-8") as f:
-        data = json.load(f)
+    
     import ast  # ✅ safe way to convert string to dict
 
     # Loop through movie data
